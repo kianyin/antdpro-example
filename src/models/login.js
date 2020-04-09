@@ -15,6 +15,7 @@ const Model = {
         const state = yield select(selectState);
         const result = yield call(loginService, state);
         if (result.status === 'ok') {
+            localStorage.setItem('token', result.token)
             history.push('/')
         } else {
             message.error('login error');
