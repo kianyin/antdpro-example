@@ -1,11 +1,15 @@
 import request from '@/utils/request';
+import API_HOST from '@/utils/apiHosts'
 
-export async function fakeAccountLogin(params) {
-  return request('/api/login/account', {
+export async function login(params) {
+  return request(`${API_HOST}/login`, {
     method: 'POST',
     data: params,
   });
 }
-export async function getFakeCaptcha(mobile) {
-  return request(`/api/login/captcha?mobile=${mobile}`);
+export async function register(params) {
+    return request(`${API_HOST}/register`, {
+        method: 'POST',
+        data: params,
+      });
 }
