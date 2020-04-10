@@ -59,6 +59,12 @@ export default defineConfig({
           component: './Topics',
         },
         {
+            name: '文章详情',
+            path: '/list/:id',
+            hideInMenu: true,
+            component: './TopicDetail',
+        },
+        {
           component: './404',
         },
       ],

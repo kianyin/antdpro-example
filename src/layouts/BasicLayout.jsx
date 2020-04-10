@@ -1,6 +1,6 @@
 import ProLayout from '@ant-design/pro-layout';
 import React from 'react';
-import { connect } from 'umi';
+import { connect, Link } from 'umi';
 
 const BasicLayout = props => {
   const { dispatch, children, settings } = props;
@@ -14,6 +14,13 @@ const BasicLayout = props => {
     <ProLayout
       onCollapse={handleMenuCollapse}
       breadcrumbRender={(routers = []) => routers}
+      menuItemRender={(menuItemProps, defaultDom) => {
+        if (menuItemProps.isUrl || menuItemProps.children || !menuItemProps.path) {
+          return defaultDom;
+        }
+
+        return <Link to={menuItemProps.path}>{defaultDom}</Link>;
+      }}
       {...props}
       {...settings}
     >

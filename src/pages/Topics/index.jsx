@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'dva';
 import { PageHeaderWrapper } from '@ant-design/pro-layout';
 import { Input, Card, Table } from 'antd'
+import { history } from 'umi';
 
 @connect(({ topics }) => ({
     topics
@@ -28,14 +29,17 @@ export default class Topics extends React.Component {
               key: 'title',
             },
             {
-              title: '作者',
-              dataIndex: 'author_name',
-              key: 'age',
-            },
-            {
               title: '回复数',
               dataIndex: 'reply_count',
               key: 'reply_count',
+            },
+            {
+              title: '操作',
+              key: 'operate',
+              render: (record)=>
+                  <span onClick={()=>history.push(`/list/${record._id}`)}>
+                      查看
+                  </span>
             },
           ];
         const tableProps = {

@@ -6,3 +6,7 @@ export async function getList(params) {
     params,
   });
 }
+
+export async function getDetail(id) {
+    return request(`${API_HOST}/topics/${id}`);
+  }
