@@ -11,12 +11,13 @@ const Model = {
         data_list: [],
         total: 0
     },
-    search: ''
+    page: 1,
+    title: ''
   },
   effects: {
     *fetchTopics(_, { call, put, select }) {
-        const { search } = yield select(selectState);
-        const result = yield call( getList, { search });
+        const { title, page } = yield select(selectState);
+        const result = yield call( getList, { title, page });
         if (result.status === 'ok') {
             yield put({
                 type: 'overrideStateProps',
